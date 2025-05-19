@@ -20,10 +20,10 @@ function(make_firmware board board_def)
     pico_add_extra_outputs(${board})
 
     add_custom_command(TARGET ${board} PRE_BUILD
-    COMMAND touch ${CMAKE_CURRENT_SOURCE_DIR}/cli.c)
+            COMMAND ${CMAKE_COMMAND} -E touch_nocreate ${CMAKE_CURRENT_SOURCE_DIR}/cli.c)
 
     add_custom_command(TARGET ${board} POST_BUILD
-                       COMMAND cp ${board}.uf2 ${CMAKE_CURRENT_LIST_DIR}/..)
+            COMMAND ${CMAKE_COMMAND} -E copy ${board}.uf2 ${CMAKE_CURRENT_LIST_DIR}/..)
 endfunction()
 
 make_firmware(popn_pico2 BOARD_POPN_PICO2)
