@@ -2,3 +2,6 @@ build
 pico-examples
 pico-sdk
 .vscode
+.idea
+cmake-build-debug
+*.uf2
